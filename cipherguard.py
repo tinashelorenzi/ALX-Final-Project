@@ -10,9 +10,12 @@ import sqlite3
 import shutil
 import secrets
 
+
 def derive_key(salt, password):
-    """Derive a encoded salt key
-        This is used by the script entirely"""
+    """
+    Derive a encoded salt key
+    This is used by the script entirely
+    """
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         iterations=100000,
@@ -20,7 +23,8 @@ def derive_key(salt, password):
         length=32,
         backend=default_backend()
     )
-    return base64.urlsafe_b64encode(kdf.derive(password))#.encode()))
+    return base64.urlsafe_b64encode(kdf.derive(password))
+
 
 def encrypt_pass(pass_str, encrypt_key):
     """Encrypts a password string with encruption key
@@ -29,16 +33,17 @@ def encrypt_pass(pass_str, encrypt_key):
     """
     backend = default_backend()
 
-    salt = b'salt'  # Change this to a random value
+    salt = b'salt'
     password = encrypt_key.encode()
 
     key = derive_key(salt, password)
-    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6[' # Change this to an 8-byte random value
+    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['
 
     if len(iv) != 8:
         raise ValueError("IV size must be 8 bytes")
 
-    cipher = Cipher(algorithms.Blowfish(key), mode=modes.CFB(iv), backend=backend)
+    cipher = Cipher(algorithms.Blowfish(key),
+                    mode=modes.CFB(iv), backend=backend)
     encryptor = cipher.encryptor()
 
     padder = padding.PKCS7(64).padder()
@@ -47,6 +52,7 @@ def encrypt_pass(pass_str, encrypt_key):
     encrypted_data = encryptor.update(padded_data) + encryptor.finalize()
     return base64.b64encode(encrypted_data).decode()
 
+
 def decrypt_pass(encrypted_pass, encrypt_key):
     """Decrypts an encrypted string using a provided key
     encrypted_pass: Encrypted string
@@ -54,13 +60,14 @@ def decrypt_pass(encrypted_pass, encrypt_key):
     """
     backend = default_backend()
 
-    salt = b'salt'  # Change this to a random value
+    salt = b'salt'
     password = encrypt_key.encode()
 
     key = derive_key(salt, password)
-    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['  # Change this to the same value used for encryption
+    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['
 
-    cipher = Cipher(algorithms.Blowfish(key), mode=modes.CFB(iv), backend=backend)
+    cipher = Cipher(algorithms.Blowfish(key),
+                    mode=modes.CFB(iv), backend=backend)
     decryptor = cipher.decryptor()
 
     encrypted_data = base64.b64decode(encrypted_pass)
@@ -82,11 +89,11 @@ def encrypt_db(input_db_path, output_db_path, encrypt_key):
     """
     backend = default_backend()
 
-    salt = b'salt'  # Change this to a random value
+    salt = b'salt'
     password = encrypt_key.encode()
 
     key = derive_key(salt, password)
-    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['  # Change this to a random value
+    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['
 
     cipher = Cipher(algorithms.Blowfish(key), mode=modes.CFB(iv), backend=backend)
     encryptor = cipher.encryptor()
@@ -112,12 +119,12 @@ def decrypt_db(input_db_path, output_db_path, encrypt_key):
     """
     backend = default_backend()
 
-    salt = b'salt'  # Change this to a random value
+    salt = b'salt'
     password = encrypt_key.encode()
 
     key = derive_key(salt, password)
-    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['  # Change this to the same value used for encryption
-
+    iv = b'\x01\xec\xfd\x1b\x1e\xc5\xf6['
+  # Change this to the same value used for encryption
     cipher = Cipher(algorithms.Blowfish(key), mode=modes.CFB(iv), backend=backend)
     decryptor = cipher.decryptor()
 
