@@ -26,6 +26,7 @@ CipherGuard is a secure password manager built primarily in Python, designed to 
   pip install virtualenv
   pip install flask
   pip install Tkinter cryptography crypto
+  ```
 
 ### Languages used
   Python
@@ -34,9 +35,11 @@ CipherGuard is a secure password manager built primarily in Python, designed to 
   HTML
   Jinja
 ### Installation
+  ```bash
   git clone https://github.com/tinashelorenzi/CipherGuard.git
   cd CipherGuard
   flask run
+  ```
   Open your browser and visit https://localhost:5000
 
 ### Security Considerations
