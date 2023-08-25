@@ -34,7 +34,7 @@ CipherGuard is a secure password manager built primarily in Python, designed to 
   HTML
   Jinja
 ### Installation
-  git clone https://github.com/YourUsername/CipherGuard.git
+  git clone https://github.com/tinashelorenzi/CipherGuard.git
   cd CipherGuard
   flask run
   Open your browser and visit https://localhost:5000
