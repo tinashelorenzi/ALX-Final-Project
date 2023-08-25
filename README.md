@@ -40,9 +40,9 @@ CipherGuard is a secure password manager built primarily in Python, designed to 
   Open your browser and visit https://localhost:5000
 
 ### Security Considerations
-    <ul> The Blowfish encryption algorithm used in CipherGuard is designed to be secure, but it's important to stay informed about cryptography best practices and vulnerabilities.</ul>
-    <ul> Make sure to keep your master password secure and do not share it with anyone.</ul>
-    <ul> Regularly back up your encrypted password database to prevent data loss.</ul>
+    -The Blowfish encryption algorithm used in CipherGuard is designed to be secure, but it's important to stay informed about cryptography best practices and vulnerabilities.
+    - Make sure to keep your master password secure and do not share it with anyone.
+    - Regularly back up your encrypted password database to prevent data loss.
 
 ### Author
 CipherGuard is developed by Tinashe Matanda. Contact: tinashelorenzi@protonmail.com
