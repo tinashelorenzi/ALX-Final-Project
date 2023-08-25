@@ -1,0 +1,79 @@
+body {
+    background-color: #f5f6fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #e74c3c;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .main {
+    flex: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+  }
+  
+  #master,
+  #social_media,
+  #banking,
+  #devices,
+  #other {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  /* Improve the visibility of the logout link */
+  a.logout {
+    color: #e74c3c;
+  }
+  
+  a:hover {
+    color: #c0392b;
+  }  
