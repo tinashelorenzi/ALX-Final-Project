@@ -9,6 +9,10 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
   }
   
   h1 {
@@ -21,8 +25,12 @@ body {
     transition: color 0.3s ease;
   }
   
-  a:hover {
+  a.logout {
     color: #e74c3c;
+  }
+  
+  a:hover {
+    color: #c0392b;
   }
   
   .container {
@@ -63,17 +71,14 @@ body {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  a {
-    color: #3498db;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  
+  footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
   
-  /* Improve the visibility of the logout link */
-  a.logout {
-    color: #e74c3c;
-  }
-  
-  a:hover {
-    color: #c0392b;
-  }  

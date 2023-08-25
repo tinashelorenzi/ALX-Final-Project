@@ -27,5 +27,13 @@
       <div id="other">Other Content</div>
     </div>
   </div>
+  <footer>
+    <p>&copy; <span id="year"></span> CipherGuard | Built by Tinashe Matanda</p>
+  </footer>
+
+  <script>
+    // Dynamically update the year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
