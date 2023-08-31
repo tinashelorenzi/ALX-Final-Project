@@ -2,77 +2,75 @@ body {
     background-color: #f5f6fa;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-  }
-  
-  header {
+}
+
+header {
     background-color: #3498db;
     color: white;
     padding: 20px;
     text-align: center;
-    position: fixed;
+    
     top: 0;
     width: 100%;
     z-index: 1000;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-size: 32px;
-  }
-  
-  a {
+}
+
+a {
     color: #3498db;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  a.logout {
+}
+
+a.logout {
     color: #e74c3c;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: #c0392b;
-  }
-  
-  .container {
+}
+
+.container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-  }
-  
-  .sidebar {
+}
+
+.sidebar {
     width: 250px;
     background-color: #2c3e50;
     color: white;
     padding: 20px;
-  }
-  
-  .sidebar ul {
+}
+
+.sidebar ul {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .sidebar li {
+}
+
+.sidebar li {
     margin-bottom: 10px;
-  }
-  
-  .main {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.main {
     flex: 1;
     padding: 20px;
     background-color: #ecf0f1;
-  }
-  
-  #master,
-  #social_media,
-  #banking,
-  #devices,
-  #other {
+}
+
+.category-content {
     margin-bottom: 20px;
     padding: 15px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  footer {
+}
+
+footer {
     background-color: #34495e;
     color: white;
     text-align: center;
@@ -80,5 +78,4 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-  }
-  
+}

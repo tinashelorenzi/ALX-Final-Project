@@ -3,6 +3,27 @@
 <head>
   <title>CipherGuard Create</title>
   <link rel="stylesheet" href="static/style.css">
+  <style>
+    /* Center the container */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Make the container take up the full viewport height */
+    }
+
+    /* Set maximum width for the form */
+    form {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -13,55 +34,70 @@
       <div class="progressbar">
         <div class="progressbar-value"></div>
       </div>
-      <button class="button" type="submit">Create</button>
+      <button class="button" type="submit" disabled>Create</button>
     </form>
     <script>
       const passwordInput = document.querySelector("input[name='password']");
       const confirmPasswordInput = document.querySelector("input[name='confirm_password']");
       const progressbar = document.querySelector(".progressbar-value");
+      const submitButton = document.querySelector(".button");
 
-      progressbar.style.width = 0;
+      // Set initial progress bar width to 0%
+      progressbar.style.width = "0%";
 
       confirmPasswordInput.addEventListener("input", () => {
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
 
-        const progressbarValue = Math.floor(confirmPassword.length / password.length * 100);
+        const progressbarValue = Math.min(Math.floor((confirmPassword.length / password.length) * 100), 100);
         progressbar.style.width = `${progressbarValue}%`;
+
+        // Enable the button only if passwords match and progress bar is full
+        if (password === confirmPassword && progressbarValue === 100) {
+          submitButton.disabled = false;
+        } else {
+          submitButton.disabled = true;
+        }
       });
 
-      // Check password strength using JavaScript
+      // Improved password strength calculation
       const checkPasswordStrength = (password) => {
-        const strength = 0;
+        let strength = 0;
 
         if (password.length >= 8) {
-          strength += 10;
+          strength += 20;
         }
 
         if (password.match(/[a-z]/)) {
-          strength += 10;
+          strength += 20;
         }
 
         if (password.match(/[A-Z]/)) {
-          strength += 10;
+          strength += 20;
         }
 
         if (password.match(/[0-9]/)) {
-          strength += 10;
+          strength += 20;
         }
 
         if (password.match(/[!@#$%^&*()_+~]/)) {
-          strength += 10;
+          strength += 20;
         }
 
         return strength;
       };
 
-      // Update the progress bar based on the password strength
       passwordInput.addEventListener("input", () => {
         const password = passwordInput.value;
         const progressbarValue = checkPasswordStrength(password);
         progressbar.style.width = `${progressbarValue}%`;
+
+        // Enable the button only if passwords match and progress bar is full
+        if (confirmPasswordInput.value === password && progressbarValue === 100) {
+          submitButton.disabled = false;
+        } else {
+          submitButton.disabled = true;
+        }
       });
     </script>
   </div>

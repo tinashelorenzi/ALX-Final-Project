@@ -3,6 +3,33 @@
 <head>
   <title>CipherGuard Login</title>
   <link rel="stylesheet" href="static/style.css">
+  <style>
+    /* Center the container */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Make the container take up the full viewport height */
+    }
+
+    /* Set maximum width for the form */
+    form {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    /* Style for the footer */
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -11,6 +38,15 @@
       <input type="password" class="form-control" name="password" placeholder="Master Password">
       <button class="button" type="submit">Login</button>
     </form>
+    <div class="footer" id="footer">
+      <!-- Footer content will be added by JavaScript -->
+    </div>
   </div>
+  <script>
+    // Get the current year using JavaScript
+    const currentYear = new Date().getFullYear();
+    const footerElement = document.getElementById("footer");
+    footerElement.innerHTML = `&copy; ${currentYear} CipherGuard | Tinashe Matanda`;
+  </script>
 </body>
 </html>

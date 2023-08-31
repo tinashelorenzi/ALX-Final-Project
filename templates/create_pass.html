@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Password</title>
+  <link rel="stylesheet" href="static/style.css">
+  <style>
+    .return-dashboard-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+    }
+    /* Center the container */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Make the container take up the full viewport height */
+    }
+
+    /* Set maximum width for the form */
+    form {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    /* Style for the footer */
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Password</h1>
+    <form action="/append" method="post">
+      <input type="text" class="form-control" name="name" placeholder="Name" required>
+      <input type="text" class="form-control" name="url" placeholder="URL" required>
+      <select class="form-control" name="category" required>
+        <option value="" disabled selected>Select Category</option>
+        <option value="social">Social</option>
+        <option value="email">Email</option>
+        <option value="banking">Banking</option>
+        <option value="master">Master Password</option>
+        <option value="devices">Devices</option>
+        <!-- Add more options as needed -->
+      </select>
+      <input type="password" class="form-control" name="password" placeholder="Password" required>
+      <button class="button" type="submit">Add Password</button>
+    </form>
+    <div class="footer" id="footer">
+      <!-- Footer content will be added by JavaScript -->
+    </div>
+  </div>
+  <script>
+    // Get the current year using JavaScript
+    const currentYear = new Date().getFullYear();
+    const footerElement = document.getElementById("footer");
+    footerElement.innerHTML = `&copy; ${currentYear} Tinashe Matanda`;
+  </script>
+</body>
+<footer>
+  <a href="/dashboard" class="return-dashboard-button">Return to dashboard</a>
+</footer>
+</html>

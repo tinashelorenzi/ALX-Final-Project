@@ -53,7 +53,7 @@
         <li><a href="/dashboard?category=master" class="category-link">Master</a></li><br>
         <li><a href="/dashboard?category=social" class="category-link">Social Media</a></li><br>
         <li><a href="/dashboard?category=banking" class="category-link">Banking</a></li><br>
-        <li><a href="/dashboard?category=email" class="category-link">Email</a></li><br>
+        
         <li><a href="/dashboard?category=master" class="category-link">Other</a></li><br>
         <li><a href="/dashboard?category=devices" class="category-link">Devices</a></li>
       </ul>
@@ -79,12 +79,6 @@
                 <td>{{ password_item['category'] }}</td>
                 <td>{{ password_item['password'] }}</td>
                 <td>
-                  <form action="/decrypt_password" method="post">
-                    <input type="hidden" name="password" value="{{ password_item['password'] }}">
-                    <button>Decrypt</button>
-                  </form>
-                </td>
-                <td>
                   <form action="/delete_password" method="post">
                     <input type="hidden" name="password_id" value="{{ password_item['id'] }}">
                     <button type="submit" class="delete-button">Delete</button>
@@ -101,7 +95,7 @@
   <footer>
     <p>&copy; <span id="year"></span> CipherGuard | Built by Tinashe Matanda</p>
   </footer>
-  <a href="/append" class="add-password-button">+</a>
+  <a href="/add_password" class="add-password-button">+</a>
 
   <script>
     const sidebarToggle = document.getElementById("sidebarToggle");

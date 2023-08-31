@@ -10,27 +10,15 @@ def create_tables():
   
   cursor.execute("""CREATE TABLE IF NOT EXISTS master (
     name TEXT NOT NULL,
-    password_base64 TEXT NOT NULL
+    password TEXT NOT NULL
   )""")
 
-  cursor.execute("""CREATE TABLE IF NOT EXISTS social_media (
+  cursor.execute("""CREATE TABLE IF NOT EXISTS passcodes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    password_base64 TEXT NOT NULL
-  )""")
-
-  cursor.execute("""CREATE TABLE IF NOT EXISTS banking (
-    name TEXT NOT NULL,
-    password_base64 TEXT NOT NULL
-  )""")
-
-  cursor.execute("""CREATE TABLE IF NOT EXISTS devices (
-    name TEXT NOT NULL,
-    password_base64 TEXT NOT NULL
-  )""")
-
-  cursor.execute("""CREATE TABLE IF NOT EXISTS other (
-    name TEXT NOT NULL,
-    password_base64 TEXT NOT NULL
+    url TEXT NOT NULL,
+    category TEXT NOT NULL,
+    password TEXT NOT NULL
   )""")
 
   conn.commit()
@@ -88,7 +76,7 @@ def inserter_to_db(table_name, name, password_base64):
         cursor = conn.cursor()
 
         # Insert data into the table
-        query = f"INSERT INTO {table_name} (name, password_base64) VALUES (?, ?)"
+        query = f"INSERT INTO {table_name} (name, password) VALUES (?, ?)"
         cursor.execute(query, (name, password_base64))
 
         # Commit the transaction and close the connection
@@ -111,7 +99,7 @@ def authenticate(password):
 
     try:
         # Retrieve the encrypted password from the master table
-        query = "SELECT password_base64 FROM master WHERE name = ?"
+        query = "SELECT password FROM master WHERE name = ?"
         cursor.execute(query, ("name",))  # Assuming you want to retrieve for a specific entry named "name"
         fetched_data = cursor.fetchone()
 
@@ -134,3 +122,28 @@ def authenticate(password):
         # Close the connection
         conn.close()
         
+def fetch_data(table_name):
+    connection = sqlite3.connect("vault/database.db")
+    cursor = connection.cursor()
+
+    query = f"SELECT name, password_base64 FROM {table_name}"
+    cursor.execute(query)
+    data = cursor.fetchall()
+
+    connection.close()
+    return data
+
+def get_table_data(table_name):
+    conn = sqlite3.connect('vault/database.db')  # Change the path to your database file
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM {table_name}")
+    columns = [desc[0] for desc in cursor.description]
+    rows = cursor.fetchall()
+
+    data = []
+    for row in rows:
+        data.append(dict(zip(columns, row)))
+
+    conn.close()
+    return data
