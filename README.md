@@ -1,4 +1,4 @@
-# ALX-Final-Project
+# CipherGuard
 # CipherGuard - Secure Password Manager
 
 CipherGuard is a secure password manager built primarily in Python, designed to provide robust encryption and local storage for your sensitive passwords. It employs the Blowfish encryption algorithm to ensure the confidentiality of your data. This repository contains the source code and documentation for CipherGuard, developed by Tinashe Matanda.
