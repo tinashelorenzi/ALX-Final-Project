@@ -6,7 +6,7 @@ from cs50 import SQL
 
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Set your secret key here
+app.secret_key = 'William Shakespear'  # Set your secret key here
 
 @app.route("/")
 def index():
